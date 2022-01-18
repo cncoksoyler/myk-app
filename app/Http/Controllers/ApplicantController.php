@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Applicant;
 use App\Models\Profession;
+use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -49,15 +50,27 @@ class ApplicantController extends Controller
         //     'area'=>'required'
 
         // ]);
-    // dd($request);
+        $profession_detail = Profession::where('id',$request->profession)->get('name');
+        // dd([
+        //     'name'=>$request->name,
+        //     'surname'=> $request->surname,
+        //     'TC'=>$request->TC,
+        //     'mobile'=>$request->mobile,
+        //     'workplace'=>$request->workplace,
+        //     'profession_id'=>(int)($request->profession),
+        //     'speciality_detail'=>$profession_detail[0]->name,
+        //     'subspeciality_detail'=>$request->subspeciality_detail,
+
+        // ]);
+    
         Applicant::create([
             'name'=>$request->name,
             'surname'=> $request->surname,
             'TC'=>$request->TC,
             'mobile'=>$request->mobile,
             'workplace'=>$request->workplace,
-            'profession'=>$request->profession[0],
-            'profession_detail'=>$request->profession[1],
+            'profession_id'=>$request->profession,
+            'speciality_detail'=>$profession_detail[0]->name,
             'subspeciality_detail'=>$request->subspeciality_detail,
 
         ]);

@@ -20,7 +20,7 @@ class Applicant extends Model
         'TC',
         'mobile',
         'workplace',
-        
+        'profession_id',
         'speciality_detail',
         'subspeciality_detail'
     ];
