@@ -15,10 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Main Page') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants')">
                         {{ __('Applicants') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('exams.index')" :active="request()->routeIs('exams')">
                         {{ __('Exams') }}
                     </x-nav-link>
                 </div>
@@ -75,7 +75,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Applicants') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('exams.index')" :active="request()->routeIs('exams/exam_list')">
                 {{ __('Exams') }}
             </x-responsive-nav-link>
         </div>

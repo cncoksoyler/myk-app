@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicantController;
-
+use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +22,8 @@ Route::get('/', function () {
 Route::group(['middleware'=>'auth'], function(){
     
     Route::resource('applicants',ApplicantController::class);
+    Route::resource('exams',ExamController::class);
+   
     
 });
 
