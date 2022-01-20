@@ -6,6 +6,12 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
+    variants: {
+        textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+
+        boxShadow: ['responsive', 'hover', 'focus', 'group-hover'],
+        backgroundColor: ['active', 'group-hover'],
+    },
 
     theme: {
         extend: {

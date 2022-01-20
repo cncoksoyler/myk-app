@@ -51,17 +51,7 @@ class ApplicantController extends Controller
 
         // ]);
         $profession_detail = Profession::where('id',$request->profession)->get('name');
-        // dd([
-        //     'name'=>$request->name,
-        //     'surname'=> $request->surname,
-        //     'TC'=>$request->TC,
-        //     'mobile'=>$request->mobile,
-        //     'workplace'=>$request->workplace,
-        //     'profession_id'=>(int)($request->profession),
-        //     'speciality_detail'=>$profession_detail[0]->name,
-        //     'subspeciality_detail'=>$request->subspeciality_detail,
 
-        // ]);
     
         Applicant::create([
             'name'=>$request->name,

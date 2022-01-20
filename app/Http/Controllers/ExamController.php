@@ -28,8 +28,8 @@ class ExamController extends Controller
      */
     public function create()
     {
-      
-        return 'create';
+        $exam=Exam::all();
+        return view('exams.exam_add',compact('exam'));
     }
 
     /**
@@ -48,20 +48,20 @@ class ExamController extends Controller
         //     'area'=>'required'
 
         // ]);
-       
-        // dd([
-        //     'name'=>$request->name,
-        //     'surname'=> $request->surname,
-        //     'TC'=>$request->TC,
-        //     'mobile'=>$request->mobile,
-        //     'workplace'=>$request->workplace,
-        //     'profession_id'=>(int)($request->profession),
-        //     'speciality_detail'=>$profession_detail[0]->name,
-        //     'subspeciality_detail'=>$request->subspeciality_detail,
-
-        // ]);
+      // dd($request);
+ 
+       Exam::create([
+           'name'=>$request->name,
+           'period'=>$request->period,
+           'exam_date'=>$request->exam_date,
+           'description'=>$request->description
+       ]);
     
-        return 'store';
+       return redirect()->route('exams.index')
+        ->with([
+            'message' =>"Sınav başarıyla eklendi",
+            'message_type' =>'success'
+        ]);
         
     }
 
