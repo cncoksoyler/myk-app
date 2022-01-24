@@ -19,7 +19,9 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->foreignIdFor(Exam::class);
             $table->foreignIdFor(Applicant::class);
+            $table->float('result');
             $table->timestamps();
+            $table->softDeletes();
             $table->unique(['exam_id','applicant_id']);
         });
     }

@@ -25,6 +25,7 @@ class CreateApplicantsTable extends Migration
             $table->string('speciality_detail');
             $table->string('subspeciality_detail');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
