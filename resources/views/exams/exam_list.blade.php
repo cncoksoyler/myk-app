@@ -23,7 +23,7 @@
         <div class="flex flex-row pt-6 ">
 
             @foreach ($exams as $exam )
-            <a href="#">
+            <a href="{{route('results.show',$exam)}}">
                 <div class="px-6 group">
                     <div class="px-4 py-3 bg-white group-hover:bg-slate-500 rounded-md shadow-md">
                         <div>

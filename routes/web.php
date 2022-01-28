@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ Route::group(['middleware'=>'auth'], function(){
     
     Route::resource('applicants',ApplicantController::class);
     Route::resource('exams',ExamController::class);
+    Route::resource('results',ResultController::class);
    
     
 });

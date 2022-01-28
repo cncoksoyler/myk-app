@@ -13,14 +13,14 @@
 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div>
-            <a href="{{route('applicants.create')}}">
+            <a href="{{route('results.create')}}">
                 <x-button>
-                {{ __('Kişiyi Ekle') }}
+                {{ __('Sınava Kişiyi Ekle') }}
             </x-button>
             </a>
         </div>
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-
+        <h1>{{$data[0]->examDetails->name}} - {{$data[0]->examDetails->period}} </h1>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
@@ -40,22 +40,13 @@
                             Mobile
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Workplace
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Profession
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Subprofession
+                            Score
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Created At
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Updated At
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            <input type="text">
                         </th>
                         <th scope="col" class="relative px-6 py-3">
                             <span class="sr-only">Edit</span>
@@ -64,7 +55,7 @@
                 </thead>
 
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ( $applicants as $item )
+                    @foreach ( $data as $item )
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
@@ -78,33 +69,24 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->name}}</div>
+                            <div class="text-sm text-gray-900">{{$item->applicantDetails->name}}</div>
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->surname}}</div>
+                            <div class="text-sm text-gray-900">{{$item->applicantDetails->surname}}</div>
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->TC}}</div>
+                            <div class="text-sm text-gray-900">{{$item->applicantDetails->TC}}</div>
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->mobile}}</div>
+                            <div class="text-sm text-gray-900">{{$item->applicantDetails->mobile}}</div>
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->workplace}}</div>
+                            <div class="text-sm text-gray-900"><input type="text" class="from-control" value="{{$item->result}}"></div>
 
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->modelProfession->name}}</div>
-
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {{$item->subspeciality_detail}}
-                            </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{$item->created_at}}
@@ -113,7 +95,6 @@
                             {{$item->updated_at}}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Add </a>
                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit </a>
                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Drop</a>
                         </td>
