@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col">
-                        <form class="form" action="{{route('exams.store')}}" method="post" enctype="multipart/form-data">
+                        <form class="form" action="{{route('results.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800v mt-8">
                                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Aday Bilgileri</h2>
@@ -26,35 +26,42 @@
                                 @endif
 
 
-                                <div class="grid grid-cols-1 gap-6 mt-4  sm:grid-cols-3">
-                                    <div class="flex flex-row">
-                                        <div class="flex flex-col px-5">
-                                            <label class="text-gray-700 dark:text-gray-200">Sınav Adı</label>
-                                            <input name="name" type="text" value="{{old('name')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                                        </div>
-                                        <div class="flex flex-col px-5">
-                                            <label class="text-gray-700 dark:text-gray-200">Dönem</label>
-                                            <input name="period" type="text" value="{{old('period')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                                        </div>
-                                        <div>
-                                        <div class="flex flex-col px-5">
-                                        <label class="text-gray-700 dark:text-gray-200">Sınav Tarihi</label>
-                                            <div class="datepicker " data-mdb-toggle-button="false">
-                                                <input type="date" name="exam_date" value="{{old('exam_date')}}" class="form-control block w-full px-4 py-2 mt-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" />
-                                                <button class="datepicker-toggle-button" data-mdb-toggle="datepicker">
-                                                    <i class="fas fa-calendar datepicker-toggle-icon"></i>
-                                                </button>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    </div>
-
-        
+                                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                     <div>
-                                        <label class="text-gray-700 dark:text-gray-200">Detay</label>
-                                        <input name="description" type="text" value="{{old('description')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <label class="text-gray-700 dark:text-gray-200">Ad</label>
+                                        <input name="name" type="text" value="{{old('name')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200">Soyad</label>
+                                        <input name="surname" type="text" value="{{old('surname')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200">TC</label>
+                                        <input name="TC" type="text" value="{{old('TC')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200">Mobil</label>
+                                        <input name="mobile" type="text" value="{{old('mobile')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200">Çalıştığı Yer</label>
+                                        <input name="workplace" type="text" value="{{old('workplace')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200" for="AMG">Uzmanlık</label>
+                                        <select name="profession" value="{{old('profession')}}" class="w-full block border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 outline-none mt-2">
+
+
+
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200">Alt Uzmanlık</label>
+                                        <input name="subspeciality_detail" type="text" value="{{old('subspeciality_detail')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+
 
                                 </div>
 
@@ -63,6 +70,7 @@
                                         {{ __('Kaydet') }}
                                     </x-button>
                                 </div>
+
 
                             </section>
                         </form>

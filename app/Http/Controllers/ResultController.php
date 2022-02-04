@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
+use App\Models\Exam;
 use App\Models\Result;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
-       /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,8 +17,8 @@ class ResultController extends Controller
     public function index()
     {
         // return 'index';
-        
-        
+
+
         //dd($results);
         return 'index';
     }
@@ -28,8 +30,9 @@ class ResultController extends Controller
      */
     public function create()
     {
-       
-       return view('results.result_add',compact('profession'));
+
+        $applicants = Applicant::all();
+        return view('results.result_add', compact('applicants'));
     }
 
     /**
@@ -40,7 +43,7 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //buraya validateCategory tarzı bir fonkisyon alınabilir
         // $validated = $request->validate([
         //     'name'=>'required|max:20',
@@ -48,28 +51,27 @@ class ResultController extends Controller
         //     'area'=>'required'
 
         // ]);
-        $profession_detail = Result::where('id',$request->profession)->get('name');
+        $profession_detail = Result::where('id', $request->profession)->get('name');
 
-    
+
         Result::create([
-            'name'=>$request->name,
-            'surname'=> $request->surname,
-            'TC'=>$request->TC,
-            'mobile'=>$request->mobile,
-            'workplace'=>$request->workplace,
-            'profession_id'=>$request->profession,
-            'speciality_detail'=>$profession_detail[0]->name,
-            'subspeciality_detail'=>$request->subspeciality_detail,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'TC' => $request->TC,
+            'mobile' => $request->mobile,
+            'workplace' => $request->workplace,
+            'profession_id' => $request->profession,
+            'speciality_detail' => $profession_detail[0]->name,
+            'subspeciality_detail' => $request->subspeciality_detail,
 
         ]);
 
 
         return redirect()->route('results.index')
-        ->with([
-            'message' =>"Ürününüz başarıyla eklendi",
-            'message_type' =>'success'
-        ]);
-        
+            ->with([
+                'message' => "Kişi başarıyla eklendi",
+                'message_type' => 'success'
+            ]);
     }
 
     /**
@@ -80,9 +82,15 @@ class ResultController extends Controller
      */
     public function show($id)
     {
-        $data = Result::with('examDetails','applicantDetails')->where('id',$id)->get();
-        // dd($data[0]);
-        return view('results.result_list',compact('data'));
+
+        $data = Result::where('exam_id', $id)->with('examDetails', 'applicantDetails')->paginate(20);
+
+        if ($data[0] === null) {
+            $dummy = Exam::where('id', $id)->firstOrFail();
+            return view('results.result_list', compact('dummy', 'data'));
+        } else {
+            return view('results.result_list', compact('data'));
+        }
     }
 
     /**
@@ -116,7 +124,7 @@ class ResultController extends Controller
      */
     public function destroy(Result $result)
     {
-        
+
         return 'destroy';
     }
 }

@@ -12,14 +12,36 @@
 
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                
+
                 <div class="flex">
                     <div class="flex-auto">
-                        <a href="{{route('results.create')}}">
-                            <x-button>
-                                {{ __('Sınava Kişiyi Ekle') }}
-                            </x-button>
-                        </a>
+                        <div class="flex pt-6 px-6">
+                            <a href="{{route('results.create')}}">
+                                <x-button>
+                                    {{ __('Add Applicant') }}
+                                </x-button>
+                            </a>
+                        </div>
+                        <div x-data="{}">
+
+                            <button type="button" @click="('search-modal', 'show')" class="inline-flex content-end px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-black bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>Click to Open Modal
+                            </button>
+
+                        </div>
+                        <!-- <div x-data="{ open: false }">
+                            <button @click="open = true">Show More...</button>
+
+                            <ul x-show="open" @click.away="open = false">
+                                <li><button wire:click="archive">Archive</button></li>
+                                <li><button wire:click="delete">Delete</button></li>
+                            </ul>
+                        </div> -->
+
                     </div>
                     <div class="flex-none w-100"></div>
                     <div class="flex-auto flex-end">
@@ -38,7 +60,13 @@
                 </div>
 
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    @if ($data[0] === null)
+                    <h1>{{$dummy->name}} - {{$dummy->period}} </h1>
+                    @else
+                    @dd($data)
                     <h1>{{$data[0]->examDetails->name}} - {{$data[0]->examDetails->period}} </h1>
+                    @endif
+
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -127,6 +155,8 @@
             </div>
         </div>
     </div>
+
+    <livewire:search-modal />
 
 
 
