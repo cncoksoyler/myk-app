@@ -25,49 +25,44 @@
 
                                 @endif
 
-
-
                                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Ad</label>
-                                        <input name="name" type="text" value="{{old('name')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="name" type="text" value="{{$request->name}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Soyad</label>
-                                        <input name="surname" type="text" value="{{old('surname')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="surname" type="text" value="{{$request->surname}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">TC</label>
-                                        <input name="TC" type="text" value="{{old('TC')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="TC" type="text" value="{{$request->TC}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Mobil</label>
-                                        <input name="mobile" type="text" value="{{old('mobile')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="mobile" type="text" value="{{$request->mobile}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Çalıştığı Yer</label>
-                                        <input name="workplace" type="text" value="{{old('workplace')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="workplace" type="text" value="{{$request->workplace}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
 
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200" for="AMG">Uzmanlık</label>
-                                        <select name="profession" value="{{old('profession')}}" class="w-full block border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 outline-none mt-2">
-
-
-
-                                        </select>
+                                        <input name="workplace" type="text" value="{{$request->speciality_detail}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Alt Uzmanlık</label>
-                                        <input name="subspeciality_detail" type="text" value="{{old('subspeciality_detail')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="subspeciality_detail" type="text" value="{{$request->subspeciality_detail}}" disabled class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
 
 
                                 </div>
 
                                 <div class="flex justify-end mt-6">
+                                    Bilgiler Doğruysa Adayı Ekleyebilirsiniz
                                     <x-button class="ml-3">
-                                        {{ __('Kaydet') }}
+                                        {{ __('Adayı Ekle') }}
                                     </x-button>
                                 </div>
 

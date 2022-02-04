@@ -28,11 +28,11 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-
-        $applicants = Applicant::all();
-        return view('results.result_add', compact('applicants'));
+        // dd($request);
+        // $applicants = Applicant::all();
+        return view('results.result_add', compact('request'));
     }
 
     /**
@@ -51,6 +51,7 @@ class ResultController extends Controller
         //     'area'=>'required'
 
         // ]);
+        dd($request);
         $profession_detail = Result::where('id', $request->profession)->get('name');
 
 

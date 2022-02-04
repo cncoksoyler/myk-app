@@ -22,48 +22,19 @@
                                 </x-button>
                             </a>
                         </div>
-                        <div x-data="{}">
-
-                            <button type="button" @click="('search-modal', 'show')" class="inline-flex content-end px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-black bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>Click to Open Modal
-                            </button>
-
-                        </div>
-                        <!-- <div x-data="{ open: false }">
-                            <button @click="open = true">Show More...</button>
-
-                            <ul x-show="open" @click.away="open = false">
-                                <li><button wire:click="archive">Archive</button></li>
-                                <li><button wire:click="delete">Delete</button></li>
-                            </ul>
-                        </div> -->
 
                     </div>
-                    <div class="flex-none w-100"></div>
-                    <div class="flex-auto flex-end">
-                        <div class="container flex mx-auto">
-                            <div class="flex border-2 rounded">
-                                <button class="flex items-center justify-center px-4 border-r">
-                                    <svg class="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <input type="text" class="px-4 py-2 w-80" placeholder="Search...">
-                            </div>
-                        </div>
+                    <div class="flex items-center justify-end">
+                        @livewire('contact-search-bar')
                     </div>
+
                 </div>
 
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     @if ($data[0] === null)
                     <h1>{{$dummy->name}} - {{$dummy->period}} </h1>
                     @else
-                    @dd($data)
+
                     <h1>{{$data[0]->examDetails->name}} - {{$data[0]->examDetails->period}} </h1>
                     @endif
 
@@ -156,7 +127,6 @@
         </div>
     </div>
 
-    <livewire:search-modal />
 
 
 
