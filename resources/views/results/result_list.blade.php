@@ -25,7 +25,7 @@
 
                     </div>
                     <div class="flex items-center justify-end">
-                        @livewire('contact-search-bar')
+                        @livewire('contact-search-bar',['id' => Route::current()->parameter('id')])
                     </div>
 
                 </div>
