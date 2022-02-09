@@ -16,7 +16,7 @@
                 <div class="flex">
                     <div class="flex-auto">
                         <div class="flex pt-6 px-6">
-                            <a href="{{route('results.create')}}">
+                            <a href="{{route('results.create',['id' => Route::current()->parameter('id')])}}">
                                 <x-button>
                                     {{ __('Add Applicant') }}
                                 </x-button>
@@ -24,8 +24,9 @@
                         </div>
 
                     </div>
-                    <div class="flex items-center justify-end">
-                        @livewire('contact-search-bar',['id' => Route::current()->parameter('id')])
+                    <div class="flex items-center justify-end ">
+                        @livewire('contact-search-bar',['id' => Route::current()->result])
+
                     </div>
 
                 </div>

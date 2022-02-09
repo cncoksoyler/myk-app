@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Applicant;
+use App\Models\Result;
 use Livewire\Component;
 
 class ContactSearchBar extends Component
@@ -10,10 +11,12 @@ class ContactSearchBar extends Component
     public $query;
     public $contacts;
     public $highlightIndex;
+    public $examid;
 
-    public function mount()
+    public function mount($id)
     {
         $this->resetFilters();
+        $this->examid = $id;
     }
 
     public function resetFilters()
@@ -51,10 +54,17 @@ class ContactSearchBar extends Component
 
     public function updatedQuery()
     {
-        $this->contacts = Applicant::where('name', 'like', '%' . $this->query . '%')
-            ->orWhere('TC', 'like', '%' . $this->query . '%')
-            ->get()
-            ->toArray();
+
+        $dummy = Result::where('exam_id', $this->examid)->get('applicant_id')->toArray();
+
+
+        $this->contacts = Applicant::with('modelResult')->where(function ($query) {
+            $query->where('name', 'like', '%' . $this->query . '%')
+                ->orWhere('TC', 'like', '%' . $this->query . '%');
+        })
+            ->whereNotIn('id',  $dummy)
+            ->get()->toArray();
+        // dd($this->contacts, $dummy);
     }
 
     public function render()

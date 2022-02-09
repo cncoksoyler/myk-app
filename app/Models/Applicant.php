@@ -11,7 +11,7 @@ class Applicant extends Model
     use HasFactory;
     use SoftDeletes;
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -27,11 +27,15 @@ class Applicant extends Model
         'subspeciality_detail'
     ];
 
-    protected $dates = [ 'deleted_at' ];
-    
+    protected $dates = ['deleted_at'];
+
     public function modelProfession()
     {
-        return $this->belongsTo(Profession::class,'profession_id');
+        return $this->belongsTo(Profession::class, 'profession_id');
     }
 
+    public function modelResult()
+    {
+        return $this->hasMany(Result::class, 'applicant_id');
+    }
 }

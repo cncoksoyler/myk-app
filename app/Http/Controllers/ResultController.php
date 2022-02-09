@@ -30,7 +30,7 @@ class ResultController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request);
+        dd($request);
         // $applicants = Applicant::all();
         return view('results.result_add', compact('request'));
     }
@@ -56,19 +56,13 @@ class ResultController extends Controller
 
 
         Result::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'TC' => $request->TC,
-            'mobile' => $request->mobile,
-            'workplace' => $request->workplace,
-            'profession_id' => $request->profession,
-            'speciality_detail' => $profession_detail[0]->name,
-            'subspeciality_detail' => $request->subspeciality_detail,
+            'exam_id' => $request->examid,
+            'applicant_id' => $request->id
 
         ]);
 
 
-        return redirect()->route('results.index')
+        return redirect()->route('results.show', $request->examid)
             ->with([
                 'message' => "Kişi başarıyla eklendi",
                 'message_type' => 'success'
