@@ -51,8 +51,8 @@ class ResultController extends Controller
         //     'area'=>'required'
 
         // ]);
-        dd($request);
-        $profession_detail = Result::where('id', $request->profession)->get('name');
+        // dd($request);
+        // $profession_detail = Result::where('id', $request->profession)->get('name');
 
 
         Result::create([

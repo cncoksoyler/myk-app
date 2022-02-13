@@ -16,7 +16,7 @@
         $contact['examid']=$examid
         @endphp
 
-        <a href="{{ route('results.create',$contact) }}" class="list-item {{ $highlightIndex === $i ? 'highlight' : '' }}" class="absolute z-10 w-full bg-white rounded-t-none shadow-lg">
+        <a href="{{ route('results.store',$contact) }}" class="list-item {{ $highlightIndex === $i ? 'highlight' : '' }}" class="absolute z-10 w-full bg-white rounded-t-none shadow-lg">
             {{ $contact['name'] }} - {{ $contact['surname'] }} - {{ $contact['TC'] }}</a>
         <br>
 
