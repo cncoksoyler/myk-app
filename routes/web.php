@@ -41,3 +41,7 @@ require __DIR__ . '/auth.php';
 // her sayfada çalışan bir filtre gelecek (livewire component)
 // kişi ekleme butonu kalkacak (results sayfası) arama componenti uzatılacak
 // mesajların ekrana basılması
+// aday bilgilerini güncelleme
+// Sınavların kategorilenmesi
+// son eklenen sınavın başta gözükmesi
+// Aktif sınavlar ayrıca yukarıda gözüksün

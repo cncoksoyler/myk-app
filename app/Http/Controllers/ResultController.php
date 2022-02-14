@@ -30,9 +30,11 @@ class ResultController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request);
+        // dd($request);
         // $applicants = Applicant::all();
-        return view('results.result_add', compact('request'));
+        $exam_id = $request->examid;
+        // dd($request, $exam_id);
+        return view('results.result_add', compact('request', 'exam_id'));
     }
 
     /**
@@ -51,18 +53,17 @@ class ResultController extends Controller
         //     'area'=>'required'
 
         // ]);
-        // dd($request);
+        // dd($request, $request->query('exam_id'));
         // $profession_detail = Result::where('id', $request->profession)->get('name');
 
 
         Result::create([
-            'exam_id' => $request->examid,
-            'applicant_id' => $request->id
+            'exam_id' => $request->query('exam_id'),
+            'applicant_id' => $request->query('applicant_id')
 
         ]);
 
-
-        return redirect()->route('results.show', $request->examid)
+        return redirect()->route('results.show', $request->query('exam_id'))
             ->with([
                 'message' => "Kişi başarıyla eklendi",
                 'message_type' => 'success'

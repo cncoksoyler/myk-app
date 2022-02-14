@@ -10,7 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col">
-                        <form class="form" action="{{route('results.store')}}" method="post" enctype="multipart/form-data">
+
+                        <form class="form" action="{{route('results.store',['applicant_id'=>$request->id,'exam_id'=>$exam_id])}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800v mt-8">
                                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Aday Bilgileri</h2>
@@ -48,8 +49,8 @@
                                     </div>
 
                                     <div>
-                                        <label class="text-gray-700 dark:text-gray-200" for="AMG">Uzmanlık</label>
-                                        <input name="workplace" type="text" value="{{$request->speciality_detail}}" readonly class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <label class="text-gray-700 dark:text-gray-200">Uzmanlık</label>
+                                        <input name="speciality_detail" type="text" value="{{$request->speciality_detail}}" readonly class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Alt Uzmanlık</label>

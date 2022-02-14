@@ -48,6 +48,7 @@ class ContactSearchBar extends Component
     {
         $contact = $this->contacts[$this->highlightIndex] ?? null;
         if ($contact) {
+            dump($contact);
             $this->redirect(route('results.create', $contact['id']));
         }
     }
