@@ -39,9 +39,10 @@ require __DIR__ . '/auth.php';
 // admin route u tanımlanacak ve bunun için ayrı bir auth olacak
 // uzmanlık ekleme sayfası gelecek
 // her sayfada çalışan bir filtre gelecek (livewire component)
-// kişi ekleme butonu kalkacak (results sayfası) arama componenti uzatılacak
+// kişi ekleme butonu kalkacak (results sayfası) arama componenti uzatılacak - OK
 // mesajların ekrana basılması
 // aday bilgilerini güncelleme
 // Sınavların kategorilenmesi
 // son eklenen sınavın başta gözükmesi
 // Aktif sınavlar ayrıca yukarıda gözüksün
+// Tüm sayfalar responsive hale getirilecek

@@ -18,6 +18,8 @@ class CreateExamsTable extends Migration
             $table->string('name');
             $table->string('period');
             $table->date('exam_date');
+            $table->date('last_application_date');
+            $table->boolean('is_active');
             $table->text('description');
             $table->timestamps();
         });

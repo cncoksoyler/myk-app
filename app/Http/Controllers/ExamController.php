@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,10 +16,10 @@ class ExamController extends Controller
     public function index()
     {
         // return 'index';
-        
+
         $exams = Exam::all();
         //dd($Exams);
-        return view('exams.exam_list',compact('exams'));
+        return view('exams.exam_list', compact('exams'));
     }
 
     /**
@@ -28,8 +29,8 @@ class ExamController extends Controller
      */
     public function create()
     {
-        $exam=Exam::all();
-        return view('exams.exam_add',compact('exam'));
+        $exam = Exam::all();
+        return view('exams.exam_add', compact('exam'));
     }
 
     /**
@@ -40,7 +41,7 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //buraya validateCategory tarzı bir fonkisyon alınabilir
         // $validated = $request->validate([
         //     'name'=>'required|max:20',
@@ -48,21 +49,34 @@ class ExamController extends Controller
         //     'area'=>'required'
 
         // ]);
-      // dd($request);
- 
-       Exam::create([
-           'name'=>$request->name,
-           'period'=>$request->period,
-           'exam_date'=>$request->exam_date,
-           'description'=>$request->description
-       ]);
-    
-       return redirect()->route('exams.index')
-        ->with([
-            'message' =>"Sınav başarıyla eklendi",
-            'message_type' =>'success'
-        ]);
-        
+        // dd($request);
+
+        // $now = Carbon::now();
+        $exam = new Exam();
+        $exam->name = $request->name;
+        $exam->period = $request->period;
+        $exam->exam_date = $request->exam_date;
+        $exam->last_application_date = $request->exam_date;
+        $exam->is_active = $request->is_active === "on" ? "1" : "0";
+        $exam->description = $request->description;
+        $exam->save();
+
+        // Exam::create([
+        //     'name' => $request->name,
+        //     'period' => $request->period,
+        //     'exam_date' => $request->exam_date,
+        //     'is_active' => true,
+        //     'last_application_date' => $request->exam_date,
+
+        //     'description' => $request->description
+        // ]);
+
+
+        return redirect()->route('exams.index')
+            ->with([
+                'message' => "Sınav başarıyla eklendi",
+                'message_type' => 'success'
+            ]);
     }
 
     /**
