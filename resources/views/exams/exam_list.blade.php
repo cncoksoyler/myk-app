@@ -13,43 +13,52 @@
 
 
         <div class="flex pt-6 px-6">
-            <a href="{{route('exams.create')}}">
-                <x-button>
-                    {{ __('Add Exam') }}
-                </x-button>
-            </a>
+            <div>
+                <a href="{{route('exams.create')}}">
+                    <x-button>
+                        {{ __('Add Exam') }}
+                    </x-button>
+                </a>
+            </div>
+            <div class="flex ml-10">
+                <!-- Session Message -->
+                <x-message-status class="mb-4" :message="session('message')" />
+
+            </div>
+
         </div>
 
-        <div class="flex flex-row pt-6 ">
+
+
+        <div class="flex flex-wrap pt-6">
 
             @foreach ($exams as $exam )
-            <a href="{{route('results.show',$exam)}}">
-                <div class="px-6 group">
-                    <div class="px-4 py-3 bg-white group-hover:bg-slate-500 rounded-md shadow-md">
-                        <div>
-                            <span class="text-sm font-light text-gray-800 dark:text-gray-400">{{$exam->name}}</span>
-                            <span class="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full dark:bg-blue-300 dark:text-blue-900">{{$exam->period}}</span>
-                        </div>
+            <div class="mt-6">
+                <a href="{{route('results.show',$exam)}}">
+                    <div class="px-6 group ">
+                        <div class="px-4 py-3 bg-white group-hover:bg-slate-400 rounded-md shadow-md">
+                            <div>
+                                <span class="text-sm font-light text-gray-800 dark:text-gray-400">{{$exam->name}}</span>
+                                <span class="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full dark:bg-blue-300 dark:text-blue-900">{{$exam->period}}</span>
+                            </div>
 
-                        <div>
-                            <h1 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white">{{$exam->name}}</h1>
-                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{{$exam->description}}</p>
-                        </div>
-
-                        <div>
-                            <div class="flex m-2 text-gray-700 dark:text-gray-200">
-                                <span>Sınav Tarihi:</span>
-                                <a class="mx-2 text-blue-600 dark:text-blue-400 hover:underline">{{$exam->exam_date}}</a>
-
-
+                            <div>
+                                <h1 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white">{{$exam->name}}</h1>
+                                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{{$exam->description}}</p>
                             </div>
 
 
+                            <div class="flex flex-nowrap text-gray-700 dark:text-gray-200  ">
+                                <span>Sınav Tarihi:</span>
+                                <a class="mx-2 text-blue-600 dark:text-blue-400 hover:underline">{{$exam->exam_date}}</a>
+                            </div>
+
                         </div>
                     </div>
-                </div>
 
-            </a>
+                </a>
+            </div>
+
             @endforeach
         </div>
 
