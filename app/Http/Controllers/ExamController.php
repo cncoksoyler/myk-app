@@ -17,7 +17,7 @@ class ExamController extends Controller
     {
         // return 'index';
 
-        $exams = Exam::all();
+        $exams = Exam::orderBy('id', 'desc')->get();
         //dd($Exams);
         return view('exams.exam_list', compact('exams'));
     }
@@ -51,6 +51,12 @@ class ExamController extends Controller
         // ]);
         // dd($request);
 
+        $request->validate([
+            'name' => 'required | max:255',
+            'period' => 'required | max:255',
+            'exam_date' => 'required | date',
+            'description' => 'required | max:255'
+        ]);
         // $now = Carbon::now();
         $exam = new Exam();
         $exam->name = $request->name;

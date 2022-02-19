@@ -20,7 +20,7 @@
                     </x-button>
                 </a>
             </div>
-            <div class="flex ml-10">
+            <div class="flex flex-auto justify-items-center ml-10">
                 <!-- Session Message -->
                 <x-message-status class="mb-4" :message="session('message')" />
 
