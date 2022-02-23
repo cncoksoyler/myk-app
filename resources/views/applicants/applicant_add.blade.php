@@ -14,17 +14,10 @@
                             @csrf
                             <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800v mt-8">
                                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Aday Bilgileri</h2>
-                                @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error )
-                                        <li>{{$error}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
 
-                                @endif
 
+                                <!-- Validation Errors -->
+                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                     <div>
@@ -37,11 +30,11 @@
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">TC</label>
-                                        <input name="TC" type="text" value="{{old('TC')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="TC" type="text" maxlength="11" value="{{old('TC')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Mobil</label>
-                                        <input name="mobile" type="text" value="{{old('mobile')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <input name="mobile" type="text" maxlength="10" value="{{old('mobile')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                     </div>
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Çalıştığı Yer</label>
