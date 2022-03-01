@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ProfessionController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +33,8 @@ Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function ()
 });
 
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+    Route::resource('users', UserController::class);
+    Route::resource('professions', ProfessionController::class);
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');

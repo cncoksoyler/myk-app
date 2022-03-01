@@ -12,13 +12,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin_dashboard')">
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Main Page') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('users')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users')">
                         {{ __('Users') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.professions.index')" :active="request()->routeIs('professions')">
+                    <x-nav-link :href="route('professions.index')" :active="request()->routeIs('professions')">
                         {{ __('Professions') }}
                     </x-nav-link>
                 </div>
