@@ -121,6 +121,8 @@ return [
 
     'key' => env('APP_KEY'),
 
+    'adminPasswordForSeeder' => env('ADMIN_PASSWORD'),
+
     'cipher' => 'AES-256-CBC',
 
     /*

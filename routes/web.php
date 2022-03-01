@@ -20,16 +20,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
 
     Route::resource('applicants', ApplicantController::class);
     Route::resource('exams', ExamController::class);
     Route::resource('results', ResultController::class);
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
 
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+});
+
+// User Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'user'])->name('dashboard');
+
+
+// Admin Dashboard
+Route::get('/admin_dashboard', function () {
+    return view('admin_dashboard');
+})->middleware(['auth', 'admin'])->name('admin_dashboard');
+
 
 require __DIR__ . '/auth.php';
 
