@@ -9,8 +9,17 @@ class Profession extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name'
+    ];
+
     public function modelProfession()
     {
-        $this->belongsTo(Applicant::class,'profession_id');
+        $this->belongsTo(Applicant::class, 'profession_id');
     }
 }

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Uzmanlık Ekleme') }}
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col">
-                        <form class="form" action="{{route('applicants.store')}}" method="post" enctype="multipart/form-data">
+                        <form class="form" action="{{route('professions.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800v mt-8">
                                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Uzmanlıklar Listesi</h2>
@@ -23,6 +23,14 @@
                                     <div>
                                         <label class="text-gray-700 dark:text-gray-200">Ad</label>
                                         <input name="name" type="text" value="{{old('name')}}" class="form-control block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+                                    <div>
+                                        <label class="text-gray-700 dark:text-gray-200" for="AMG">Seviye</label>
+                                        <select name="level" value="{{old('level')}}" class="w-full block border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 outline-none mt-2">
+                                            @foreach ($levels as $level )
+                                            <option class="py-1" value="{{$level}}">{{$level}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
@@ -44,4 +52,4 @@
 
 
 
-</x-app-layout>
+</x-admin-layout>
