@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -13,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "index";
+        $users = User::where('type', 'user')->paginate(5);
+        return view('users.user_list', compact('users'));
     }
 
     /**
@@ -23,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return "create";
     }
 
     /**
@@ -34,7 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "store";
     }
 
     /**
@@ -43,9 +47,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        dd($request, $id);
+        return "show";
     }
 
     /**
@@ -56,7 +61,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "edit";
     }
 
     /**
@@ -68,7 +73,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return "update";
     }
 
     /**
@@ -77,8 +82,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        // $user = User::where()
+        $request->validate(
+            [
+                'selection' => 'required',
+            ],
+            [
+                'selection.required' => 'Form boş gönderilemez'
+            ]
+        );
+        foreach ($request->selection as $item) {
+            $user = User::where('id', $item)->delete();
+        }
+
+        return redirect()->route('users.index')
+            ->with([
+                'message' => "Kullanıcı başarıyla silindi",
+                'message_type' => 'success'
+            ]);
     }
 }
