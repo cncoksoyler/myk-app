@@ -26,6 +26,9 @@
                         </x-button>
 
                     </div>
+                    <div class="flex items-center justify-end ">
+                        @livewire('search-users')
+                    </div>
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
                         <table class="table-auto min-w-full divide-y divide-gray-200">

@@ -14,7 +14,7 @@
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div>
                     <a href="{{route('professions.create')}}">
-                        <x-button>
+                        <x-button class="mb-4">
                             {{ __('Uzmanlık Ekle') }}
                         </x-button>
                     </a>
