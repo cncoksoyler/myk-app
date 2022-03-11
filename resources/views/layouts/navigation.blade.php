@@ -13,13 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Main Page') }}
+                        {{ __('Anasayfa') }}
                     </x-nav-link>
                     <x-nav-link :href="route('applicants.index')" :active="request()->routeIs('applicants')">
-                        {{ __('Applicants') }}
+                        {{ __('Adaylar') }}
                     </x-nav-link>
                     <x-nav-link :href="route('exams.index')" :active="request()->routeIs('exams')">
-                        {{ __('Exams') }}
+                        {{ __('Sınavlar') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -44,10 +44,9 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Çıkış') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -70,13 +69,13 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Main Page') }}
+                {{ __('Anasayfa') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Applicants') }}
+                {{ __('Adaylar') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('exams.index')" :active="request()->routeIs('exams/exam_list')">
-                {{ __('Exams') }}
+                {{ __('Sınavlar') }}
             </x-responsive-nav-link>
         </div>
 
@@ -92,10 +91,9 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Çıkış') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

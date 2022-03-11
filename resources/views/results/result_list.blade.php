@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Applicant Detail') }}
+            {{ __('Aday Bilgileri') }}
         </h2>
     </x-slot>
 
@@ -34,13 +34,13 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Applicant ID
+                                    Aday ID
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Applicant Name
+                                    Aday Adı
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Applicant Surname
+                                    Aday Soyadı
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     TC
@@ -49,13 +49,13 @@
                                     Mobile
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Score
+                                    Puan
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Created At
+                                    Oluşturma
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Updated At
+                                    Güncelleme
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Edit</span>
@@ -64,53 +64,57 @@
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ( $data as $item )
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
+                            <form action="{{route('results.update',[$data,'result'])}}" method="put" enctype="multipart/form-data">
+                                @csrf
+                                @foreach ( $data as $item )
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
 
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{$item->id}}
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{$item->id}}
+                                                </div>
+
                                             </div>
-
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{$item->applicantDetails->name}}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->name}}</div>
 
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{$item->applicantDetails->surname}}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->surname}}</div>
 
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{$item->applicantDetails->TC}}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->TC}}</div>
 
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{$item->applicantDetails->mobile}}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->mobile}}</div>
 
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900"><input type="text" class="from-control" value="{{$item->result}}"></div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
 
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{$item->created_at}}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{$item->updated_at}}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit </a>
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Drop</a>
-                                </td>
-                            </tr>
-                            @endforeach
+                                        <div class="text-sm text-gray-900">
+                                            <input type="text" name="result" class="from-control" value="{{$item->result}}">
+                                        </div>
 
-
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{$item->created_at}}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{$item->updated_at}}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit </a>
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Drop</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </form>
                             <!-- More people... -->
                         </tbody>
                     </table>

@@ -9,17 +9,16 @@
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Main Page') }}
+                        {{ __('Ana Sayfa') }}
                     </x-nav-link>
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users')">
-                        {{ __('Users') }}
+                        {{ __('Kullanıcılar') }}
                     </x-nav-link>
                     <x-nav-link :href="route('professions.index')" :active="request()->routeIs('professions')">
-                        {{ __('Professions') }}
+                        {{ __('Uzmanlıklar') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -46,7 +45,7 @@
 
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Çıkış') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -69,13 +68,13 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Main Page') }}
+                {{ __('Anasayfa') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Applicants') }}
+                {{ __('Kullanıcılar') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('exams.index')" :active="request()->routeIs('exams/exam_list')">
-                {{ __('Exams') }}
+                {{ __('Uzmanlıklar') }}
             </x-responsive-nav-link>
         </div>
 
@@ -93,7 +92,7 @@
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Çıkış') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

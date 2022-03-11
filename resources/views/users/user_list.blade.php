@@ -11,7 +11,8 @@
         <x-message-status class="mb-4" :message="session('message')" />
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
     </div>
-
+    <!-- TODO
+SearchBar will be included -->
     <form action="{{route('users.destroy','selection')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('delete')

@@ -6,7 +6,9 @@
     </x-slot>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-
+    <!-- TODO
+SearchBar will be included 
+Delete (destroy buton) option will be included-->
 
     <div class="flex flex-col m-6">
 
@@ -40,7 +42,7 @@
                                     Güncelleme
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Edit
+                                    Düzenle
                                 </th>
                             </tr>
                         </thead>

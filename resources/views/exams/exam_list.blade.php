@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Applicant Detail') }}
+            {{ __('Sınav Detayı') }}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
             <div>
                 <a href="{{route('exams.create')}}">
                     <x-button>
-                        {{ __('Add Exam') }}
+                        {{ __('Sınav Ekle') }}
                     </x-button>
                 </a>
             </div>

@@ -15,8 +15,8 @@
                 <div>
                     <a href="{{route('applicants.create')}}">
                         <x-button>
-                        {{ __('Kişiyi Ekle') }}
-                    </x-button>
+                            {{ __('Kişiyi Ekle') }}
+                        </x-button>
                     </a>
                 </div>
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -25,13 +25,13 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Applicant ID
+                                    Aday ID
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Applicant Name
+                                    Aday Adı
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Applicant Surname
+                                    Aday Soyadı
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     TC
@@ -40,19 +40,19 @@
                                     Mobile
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Workplace
+                                    İşyeri
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Profession
+                                    Uzmanlık
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Subprofession
+                                    Alt Uzmanlık
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Created At
+                                    Oluşturma
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Updated At
+                                    Güncelleme
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Edit</span>
@@ -110,9 +110,8 @@
                                     {{$item->updated_at}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Add </a>
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit </a>
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Drop</a>
+                                    <!-- <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit </a> -->
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Sil</a>
                                 </td>
                             </tr>
                             @endforeach
