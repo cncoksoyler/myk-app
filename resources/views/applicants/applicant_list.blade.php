@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Applicant Detail') }}
+            {{ __('Aday Listesi') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div>
                     <a href="{{route('applicants.create')}}">
-                        <x-button>
+                        <x-button class="mb-4">
                             {{ __('Kişiyi Ekle') }}
                         </x-button>
                     </a>
@@ -95,7 +95,7 @@
 
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{$item->modelProfession->name}}</div>
+                                    <div class="text-sm text-gray-900">{{$item->profession->name}}</div>
 
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">

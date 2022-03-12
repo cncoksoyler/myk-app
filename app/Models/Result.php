@@ -16,19 +16,17 @@ class Result extends Model
         'result'
     ];
 
-   
 
-    protected $dates = [ 'deleted_at' ];
 
-    public function applicantDetails()
+    protected $dates = ['deleted_at'];
+
+    public function applicant()
     {
-        return $this->belongsTo(Applicant::class,'applicant_id');
+        return $this->belongsTo(Applicant::class, 'applicant_id');
     }
 
-    public function examDetails()
+    public function exam()
     {
-        return $this->belongsTo(Exam::class,'exam_id');
+        return $this->belongsTo(Exam::class, 'exam_id');
     }
-    
-    
 }

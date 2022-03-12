@@ -42,15 +42,6 @@ class ExamController extends Controller
     public function store(Request $request)
     {
 
-        //buraya validateCategory tarzı bir fonkisyon alınabilir
-        // $validated = $request->validate([
-        //     'name'=>'required|max:20',
-        //     'AMG'=>'required',
-        //     'area'=>'required'
-
-        // ]);
-        // dd($request);
-
         $request->validate([
             'name' => 'required | max:255',
             'period' => 'required | max:255',
@@ -66,17 +57,6 @@ class ExamController extends Controller
         $exam->is_active = $request->is_active === "on" ? "1" : "0";
         $exam->description = $request->description;
         $exam->save();
-
-        // Exam::create([
-        //     'name' => $request->name,
-        //     'period' => $request->period,
-        //     'exam_date' => $request->exam_date,
-        //     'is_active' => true,
-        //     'last_application_date' => $request->exam_date,
-
-        //     'description' => $request->description
-        // ]);
-
 
         return redirect()->route('exams.index')
             ->with([

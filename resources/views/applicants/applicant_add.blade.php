@@ -42,7 +42,7 @@
                                     </div>
 
                                     <div>
-                                        <label class="text-gray-700 dark:text-gray-200" for="AMG">Uzmanlık</label>
+                                        <label class="text-gray-700 dark:text-gray-200" for="Profession">Uzmanlık</label>
                                         <select name="profession" value="{{old('profession')}}" class="w-full block border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 outline-none mt-2">
                                             @foreach ($profession as $item )
                                             <option class="py-1" value="{{$item->id}}">{{$item->name}}</option>

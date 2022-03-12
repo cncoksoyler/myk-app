@@ -23,50 +23,53 @@
                 </div>
 
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    @if ($data[0] === null)
-                    <h1>{{$dummy->name}} - {{$dummy->period}} </h1>
-                    @else
+                    <h1>{{$exam->name}} - {{$exam->period}}</h1>
+                    <form action="{{route('results.update',$exam->id)}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
 
-                    <h1>{{$data[0]->examDetails->name}} - {{$data[0]->examDetails->period}} </h1>
-                    @endif
 
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Aday ID
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Aday Adı
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Aday Soyadı
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    TC
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Mobile
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Puan
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Oluşturma
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Güncelleme
-                                </th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                        </thead>
+                        <div class="flex justify-end mt-6">
+                            <x-button class="ml-3">
+                                {{ __('Güncelle') }}
+                            </x-button>
+                        </div>
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Aday ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Aday Adı
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Aday Soyadı
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        TC
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Mobile
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Puan
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Oluşturma
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Güncelleme
+                                    </th>
+                                    <th scope="col" class="relative px-6 py-3">
+                                        <span class="sr-only">Edit</span>
+                                    </th>
+                                </tr>
+                            </thead>
 
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <form action="{{route('results.update',[$data,'result'])}}" method="put" enctype="multipart/form-data">
-                                @csrf
-                                @foreach ( $data as $item )
+                            <tbody class="bg-white divide-y divide-gray-200">
+
+                                @foreach ( $exam->results as $item )
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
@@ -80,25 +83,26 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->name}}</div>
+                                        <div class="text-sm text-gray-900">{{$item->applicant->name}}</div>
 
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->surname}}</div>
+                                        <div class="text-sm text-gray-900">{{$item->applicant->surname}}</div>
 
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->TC}}</div>
+                                        <div class="text-sm text-gray-900">{{$item->applicant->TC}}</div>
 
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{$item->applicantDetails->mobile}}</div>
+                                        <div class="text-sm text-gray-900">{{$item->applicant->mobile}}</div>
 
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
 
                                         <div class="text-sm text-gray-900">
-                                            <input type="text" name="result" class="from-control" value="{{$item->result}}">
+                                            <input type="number" name="resultforuser[{{$item->id}}]" class="from-control" value="{{$item->result}}" min="0" max="100">
+                                            <input type="hidden" name="as[]" value="{{$item}}">
                                         </div>
 
                                     </td>
@@ -114,10 +118,12 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            </form>
-                            <!-- More people... -->
-                        </tbody>
-                    </table>
+
+                                <!-- More people... -->
+                            </tbody>
+
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>

@@ -29,13 +29,18 @@ class Applicant extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function modelProfession()
+    public function profession()
     {
         return $this->belongsTo(Profession::class, 'profession_id');
     }
 
-    public function modelResult()
+    public function result()
     {
         return $this->hasMany(Result::class, 'applicant_id');
+    }
+
+    public function exams()
+    {
+        return $this->belongsToMany(Exam::class, 'results')->withPivot('result');
     }
 }

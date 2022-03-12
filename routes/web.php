@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function ()
 
     Route::resource('applicants', ApplicantController::class);
     Route::resource('exams', ExamController::class);
-    Route::resource('results', ResultController::class);
+    Route::resource('results', ResultController::class)->except(['index']);
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -51,15 +51,20 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 require __DIR__ . '/auth.php';
 
 
-// to-do s
-// validationlar gelecek
-// admin route u tanımlanacak ve bunun için ayrı bir auth olacak
-// uzmanlık ekleme sayfası gelecek
+// TODO s
+// Uygylamanın adına karar verilecek
+// Ana sayfaya gelen bilgiler girilecek ve düzenlenecek
+// Remember me dğru çalışmıyor
+// validationlar gelecek - ok
+// admin route u tanımlanacak ve bunun için ayrı bir auth olacak - Ok
+// uzmanlık ekleme sayfası gelecek - ok
 // her sayfada çalışan bir filtre gelecek (livewire component)
 // kişi ekleme butonu kalkacak (results sayfası) arama componenti uzatılacak - OK
-// mesajların ekrana basılması
+// mesajların ekrana basılması - ok
+//       Login sayfasında dil düzeltilecek
 // aday bilgilerini güncelleme
-// Sınavların kategorilenmesi
+// Sınavların kategorilenmesi - ok
 // son eklenen sınavın başta gözükmesi
 // Aktif sınavlar ayrıca yukarıda gözüksün
 // Tüm sayfalar responsive hale getirilecek
+// Aday silme aktif hale getirilecek

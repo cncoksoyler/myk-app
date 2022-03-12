@@ -34,7 +34,7 @@
 
             @foreach ($exams as $exam )
             <div class="mt-6">
-                <a href="{{route('results.show',$exam)}}">
+                <a href="{{route('results.show',$exam->id)}}">
                     <div class="px-6 group ">
                         <div class="px-4 py-3 bg-white group-hover:bg-slate-400 rounded-md shadow-md">
                             <div>

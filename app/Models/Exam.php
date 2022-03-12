@@ -20,4 +20,14 @@ class Exam extends Model
         'exam_date',
         'description'
     ];
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
+
+    public function applicants()
+    {
+        return $this->belongsToMany(Applicant::class, 'results')->withPivot('result');
+    }
 }

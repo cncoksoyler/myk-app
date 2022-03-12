@@ -18,7 +18,7 @@ class Profession extends Model
         'name'
     ];
 
-    public function modelProfession()
+    public function profession()
     {
         $this->belongsTo(Applicant::class, 'profession_id');
     }

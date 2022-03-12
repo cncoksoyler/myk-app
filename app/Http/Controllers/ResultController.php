@@ -14,10 +14,10 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // return 'index';
-
+        dd($request);
 
         //dd($results);
         return 'index';
@@ -45,18 +45,6 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-
-        //buraya validateCategory tarzı bir fonkisyon alınabilir
-        // $validated = $request->validate([
-        //     'name'=>'required|max:20',
-        //     'AMG'=>'required',
-        //     'area'=>'required'
-
-        // ]);
-        // dd($request, $request->query('exam_id'));
-        // $profession_detail = Result::where('id', $request->profession)->get('name');
-
-
         Result::create([
             'exam_id' => $request->query('exam_id'),
             'applicant_id' => $request->query('applicant_id')
@@ -76,17 +64,12 @@ class ResultController extends Controller
      * @param  \App\Models\Result  $Result
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($exam_id)
     {
 
-        $data = Result::where('exam_id', $id)->with('examDetails', 'applicantDetails')->paginate(20);
+        $exam = Exam::where('id', $exam_id)->with(['results', 'results.applicant'])->firstOrFail();
 
-        if ($data[0] === null) {
-            $dummy = Exam::where('id', $id)->firstOrFail();
-            return view('results.result_list', compact('dummy', 'data'));
-        } else {
-            return view('results.result_list', compact('data'));
-        }
+        return view('results.result_list', compact('exam'));
     }
 
     /**
@@ -107,9 +90,19 @@ class ResultController extends Controller
      * @param  \App\Models\Result  $result
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Result $result)
+    public function update(Request $request, $result)
     {
-        return 'update';
+        // dd($request, $result);
+
+        foreach ($request->input("resultforuser") as $resultid => $note) {
+
+            $result = Result::find($resultid);
+            $result->result = $note;
+            $result->save();
+        }
+
+
+        return redirect()->back();
     }
 
     /**

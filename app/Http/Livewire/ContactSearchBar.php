@@ -59,7 +59,7 @@ class ContactSearchBar extends Component
         $dummy = Result::where('exam_id', $this->examid)->get('applicant_id')->toArray();
 
 
-        $this->contacts = Applicant::with('modelResult')->where(function ($query) {
+        $this->contacts = Applicant::with('result')->where(function ($query) {
             $query->where('name', 'like', '%' . $this->query . '%')
                 ->orWhere('TC', 'like', '%' . $this->query . '%');
         })

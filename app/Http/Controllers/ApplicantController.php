@@ -20,7 +20,7 @@ class ApplicantController extends Controller
     {
         // return 'index';
 
-        $applicants = Applicant::with('modelProfession')->paginate(20);
+        $applicants = Applicant::with('profession')->paginate(20);
         //dd($applicants);
         return view('applicants.applicant_list', compact('applicants'));
     }
