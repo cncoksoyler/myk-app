@@ -6,7 +6,7 @@
     </x-slot>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <!-- TODO
+    <!-- TODO:
 SearchBar will be included 
 Delete (destroy buton) option will be included-->
 

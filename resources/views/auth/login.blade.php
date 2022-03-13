@@ -14,7 +14,7 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <!-- TODO
+            <!-- TODO:
 Activate remember me
 Language transformation needed -->
             <!-- Email Address -->

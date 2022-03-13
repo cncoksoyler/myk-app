@@ -51,10 +51,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 require __DIR__ . '/auth.php';
 
 
-// TODO s
+// TODO: 
 // Uygylamanın adına karar verilecek
 // Ana sayfaya gelen bilgiler girilecek ve düzenlenecek
-// Remember me dğru çalışmıyor
+// Remember me doğru çalışmıyor
 // validationlar gelecek - ok
 // admin route u tanımlanacak ve bunun için ayrı bir auth olacak - Ok
 // uzmanlık ekleme sayfası gelecek - ok
