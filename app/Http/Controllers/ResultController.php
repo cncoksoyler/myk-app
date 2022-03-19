@@ -102,7 +102,7 @@ class ResultController extends Controller
         }
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Sonuçlar başarıyla güncellenmiştir');
     }
 
     /**

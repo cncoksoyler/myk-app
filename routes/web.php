@@ -52,8 +52,15 @@ require __DIR__ . '/auth.php';
 
 
 // TODO: 
-// Uygylamanın adına karar verilecek
+// Aday silme aktif hale getirilecek - ok
+// Uzmanlık sayfası detayları güncellensin (sınav/uzmanlık kodu kolonu)
+// Sınav oluşturmada isim seçimini netleştirilecek
+// Softdelete sonrası aynı kişinin eklenememesi (belki aynı kişiyi eklemeye çalışıyorsan direk soft deleti kaldır yapılablir)
+// Aday kayıt için gerekli olmayan bilgileri netle. Mesela iş yeri / alt uzmanlık vs gerekli mi?
 // Ana sayfaya gelen bilgiler girilecek ve düzenlenecek
+// aday bilgilerini güncelleme
+// Sınava aday ekleme sayfasındaki arama çubuğunu uzat
+// Uygulamanın adına karar verilecek
 // Remember me doğru çalışmıyor
 // validationlar gelecek - ok
 // admin route u tanımlanacak ve bunun için ayrı bir auth olacak - Ok
@@ -61,10 +68,11 @@ require __DIR__ . '/auth.php';
 // her sayfada çalışan bir filtre gelecek (livewire component)
 // kişi ekleme butonu kalkacak (results sayfası) arama componenti uzatılacak - OK
 // mesajların ekrana basılması - ok
-//       Login sayfasında dil düzeltilecek
-// aday bilgilerini güncelleme
+// Login sayfasında dil düzeltilecek
 // Sınavların kategorilenmesi - ok
 // son eklenen sınavın başta gözükmesi
 // Aktif sınavlar ayrıca yukarıda gözüksün
 // Tüm sayfalar responsive hale getirilecek
-// Aday silme aktif hale getirilecek
+// Telefon giriş için özel bir modul yap
+// TC kimlik validator yap
+// Sınav sayfasından olmayan kişilerin de eklenebilmesi

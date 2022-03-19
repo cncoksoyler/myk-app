@@ -13,16 +13,16 @@
 
 
         <div class="flex pt-6 px-6">
-            <div>
+            <div class="flex flex-col col-start-2">
                 <a href="{{route('exams.create')}}">
                     <x-button>
                         {{ __('Sınav Ekle') }}
                     </x-button>
                 </a>
             </div>
-            <div class="flex flex-auto justify-items-center ml-10">
+            <div class="flex flex-col col-start-6 ml-10">
                 <!-- Session Message -->
-                <x-message-status class="mb-4" :message="session('message')" />
+                <x-message-status class="mb-4 text-black" :message="session('message')" />
 
             </div>
 

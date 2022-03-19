@@ -13,11 +13,18 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div>
-                    <a href="{{route('applicants.create')}}">
-                        <x-button class="mb-4">
-                            {{ __('Kişiyi Ekle') }}
-                        </x-button>
-                    </a>
+                    <div class="flex flex-col">
+                        <a href="{{route('applicants.create')}}">
+                            <x-button class="mb-4">
+                                {{ __('Kişiyi Ekle') }}
+                            </x-button>
+                        </a>
+                    </div>
+                    <div class="flex flex-col bg-lime-800">
+                        <!-- Session Message -->
+                        <x-message-status class="mb-4 text-black" :message="session('message')" />
+
+                    </div>
                 </div>
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
@@ -110,17 +117,21 @@
                                     {{$item->updated_at}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <!-- <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit </a> -->
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Sil</a>
+                                    <form action="{{route('applicants.destroy',$item->id)}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="">
+                                            <i></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
-
-
                             <!-- More people... -->
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

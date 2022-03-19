@@ -44,14 +44,6 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-
-        //buraya validateCategory tarzı bir fonkisyon alınabilir
-        // $validated = $request->validate([
-        //     'name'=>'required|max:20',
-        //     'AMG'=>'required',
-        //     'area'=>'required'
-
-        // ]);
         $profession_detail = Profession::where('id', $request->profession)->get('name');
 
         $request->validate(
@@ -75,12 +67,9 @@ class ApplicantController extends Controller
                 'mobile.required' => 'Telefon numarası girilmesi gereklidir',
                 'mobile.regex' => 'Eksik ya da hatalı bir telefon numarası girdiniz',
                 'mobile.digits' => 'Eksik ya da hatalı bir telefon numarası girdiniz',
-
-
             ]
         );
 
-        // dd($request);
         Applicant::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -92,8 +81,6 @@ class ApplicantController extends Controller
             'subspeciality_detail' => $request->subspeciality_detail,
 
         ]);
-
-
         return redirect()->route('applicants.index')
             ->with([
                 'message' => "Aday başarıyla eklendi",
@@ -141,8 +128,14 @@ class ApplicantController extends Controller
      * @param  \App\Models\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Applicant $applicant)
+    public function destroy($id)
     {
-        return 'destroy';
+        // dd($id);
+        $applicant = Applicant::where('id', $id)->delete();
+
+        return redirect()->back()->with([
+            'message' => 'Aday kaydı başarıyla silinmiştir',
+            'message_type' => 'success'
+        ]);
     }
 }

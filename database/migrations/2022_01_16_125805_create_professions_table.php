@@ -15,6 +15,7 @@ class CreateProfessionsTable extends Migration
     {
         Schema::create('professions', function (Blueprint $table) {
             $table->id();
+            $table->string('standard')->required()->unique();
             $table->string('name')->reqired();
             $table->enum('level', [
                 'Seviye 1',
