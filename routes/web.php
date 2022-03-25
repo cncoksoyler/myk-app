@@ -55,6 +55,7 @@ require __DIR__ . '/auth.php';
 // Aday silme aktif hale getirilecek - ok
 // Uzmanlık sayfası detayları güncellensin (sınav/uzmanlık kodu kolonu)
 // Sınav oluşturmada isim seçimini netleştirilecek
+// Admin password .env'ye taşınacak
 // Softdelete sonrası aynı kişinin eklenememesi (belki aynı kişiyi eklemeye çalışıyorsan direk soft deleti kaldır yapılablir)
 // Aday kayıt için gerekli olmayan bilgileri netle. Mesela iş yeri / alt uzmanlık vs gerekli mi?
 // Ana sayfaya gelen bilgiler girilecek ve düzenlenecek
